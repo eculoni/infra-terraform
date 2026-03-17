@@ -1,0 +1,21 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform apply
+        run: |
+          terraform apply -auto-approve
